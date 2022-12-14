@@ -1,0 +1,29 @@
+Windows PowerShell
+版权所有（C） Microsoft Corporation。保留所有权利。
+
+安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows
+
+PS C:\Users\fqt15> py
+Python 3.10.8 (tags/v3.10.8:aaaf517, Oct 11 2022, 16:50:30) [MSC v.1933 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import re
+>>> re.sub('<[(!DOCTYPE)(!--)][\s\S]{0,}>','','<!DOCTYPE fdfgsd> <!-->  cvxvx<dsfa>')
+<stdin>:1: FutureWarning: Possible set difference at position 14
+''
+>>> re.sub('<(!DOCTYPE)|(!--)[\s\S]{0,}>','','<!DOCTYPE fdfgsd> <!-->  cvxvx<dsfa>')
+' fdfgsd> <'
+>>> re.sub('<![\s\S]*>','','<!jsdflk><dsfsdf>dsfgfsdg'
+... )
+'dsfgfsdg'
+>>> re.sub('<![\s\S]*?>','','<!jsdflk><dsfsdf>dsfgfsdg')
+'<dsfsdf>dsfgfsdg'
+>>> re.findall('<![\s\S]*?>','<!jsdflk><dsfsdf>dsfgfsdg')
+['<!jsdflk>']
+>>> re.finditer('<![\s\S]*?>','<!jsdflk><dsfsdf>dsfgfsdg')
+<callable_iterator object at 0x0000017FE32E4D90>
+>>> re.findall('<!([\s\S]*?)>','<!jsdflk><dsfsdf>dsfgfsdg')
+['jsdflk']
+>>> re.findall('<./([\s\S]*?)>','<!jsdflk><./jk><dsfsdf>dsfgfsdg')
+['jk']
+>>>
+
