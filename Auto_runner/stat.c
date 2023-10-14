@@ -1,19 +1,21 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #define log ".log"
-char buf[5 << 20];
-const char p[][20] = {"FINISHED", "Ôç²Ù", "¿ÎÍâ»î¶¯", "Ò¹ÅÜ", "ERROR"};
+const char p[][20] = {"FINISHED", "æ—©æ“", "è¯¾å¤–æ´»åŠ¨", "å¤œè·‘", "ERROR"};
 int main()
 {
     FILE *fp = fopen(log, "r");
-    fread(buf, 1, sizeof(buf), fp);
-    // for (int i = 0; i < 10; ++i) putchar(buf[i]);
+    fseek(fp, 0, SEEK_END);
+    long len = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    char *buf = malloc(len);
+    fread(buf, 1, len, fp);
     for (int i = 0; i < sizeof(p) / sizeof(*p); ++i)
     {
         int cnt = 0;
-        const char *t = buf;
-        while (t = strstr(t, p[i]))
-            ++cnt, t++;
+        for (const char *t = buf; t = strstr(t, p[i]); ++t)
+            ++cnt;
         printf("[%s]: \t%d\n", p[i], cnt);
     }
     fclose(fp);
